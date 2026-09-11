@@ -66,25 +66,59 @@ AI Reasoning                 RAG Knowledge
                 ↓
            Audit Logging
 
-💡 How to Use AI DevOps Assistant
+## 💡 How to Use
 
-Once the backend and frontend are running, open the chatbot in your browser and interact with it using natural-language DevOps commands or questions.
+## 🚀 How to Use
 
-1. Start the Backend
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/ai-devops-assistant.git
+cd ai-devops-assistant
+
+### 2. Setup Backend
 cd backened
-source venv/Scripts/activate
+python -m venv venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+
+### 3. Configure Gemini API
+
+Create a .env file inside the backened folder:
+
+GEMINI_API_KEY=your_gemini_api_key_here
+
+⚠️ Never share or commit your API key.
+
+### 4. Build the Knowledge Base
+
+Run the following command from the backened folder:
+
+python ai/ingest.py
+
+This creates the local ChromaDB knowledge base from the DevOps documentation.
+
+### 5. Start the Backend
 uvicorn main:app --reload
 
-Backend runs at:
+Backend will run at:
 
 http://127.0.0.1:8000
-2. Start the Frontend
+### 6. Start the Frontend
 
-Open a second terminal:
+Open a new terminal and run:
 
-cd frontend
+cd ai-devops-assistant/frontend
+npm install
 npm run dev
 
-Open the Vite URL shown in the terminal, usually:
+The frontend will normally run at:
 
 http://localhost:5173
+### 7. Open the Application
+
+Open the frontend URL in your browser:
+
+http://localhost:5173
+
+

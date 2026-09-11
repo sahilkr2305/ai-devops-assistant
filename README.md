@@ -65,7 +65,7 @@ AI Reasoning                 RAG Knowledge
         Safety & Approval
                 ↓
            Audit Logging
-
+```
 ## 💡 How to Use
 
 ## 🚀 How to Use
@@ -75,12 +75,14 @@ AI Reasoning                 RAG Knowledge
 ```bash
 git clone https://github.com/YOUR_USERNAME/ai-devops-assistant.git
 cd ai-devops-assistant
-
+```
 ### 2. Setup Backend
+```
 cd backened
 python -m venv venv
 .venv\Scripts\activate
 pip install -r requirements.txt
+```
 
 ### 3. Configure Gemini API
 
@@ -99,22 +101,25 @@ python ai/ingest.py
 This creates the local ChromaDB knowledge base from the DevOps documentation.
 
 ### 5. Start the Backend
+```
 uvicorn main:app --reload
-
+```
 Backend will run at:
-
+```
 http://127.0.0.1:8000
+```
 ### 6. Start the Frontend
 
 Open a new terminal and run:
-
+```
 cd ai-devops-assistant/frontend
 npm install
 npm run dev
-
+```
 The frontend will normally run at:
-
+```
 http://localhost:5173
+```
 ### 7. Open the Application
 
 Open the frontend URL in your browser:

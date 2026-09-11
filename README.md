@@ -66,7 +66,7 @@ AI Reasoning                 RAG Knowledge
                 ↓
            Audit Logging
 ```
-## 💡 How to Use
+
 
 ## 🚀 How to Use
 

@@ -65,3 +65,26 @@ AI Reasoning                 RAG Knowledge
         Safety & Approval
                 ↓
            Audit Logging
+
+💡 How to Use AI DevOps Assistant
+
+Once the backend and frontend are running, open the chatbot in your browser and interact with it using natural-language DevOps commands or questions.
+
+1. Start the Backend
+cd backened
+source venv/Scripts/activate
+uvicorn main:app --reload
+
+Backend runs at:
+
+http://127.0.0.1:8000
+2. Start the Frontend
+
+Open a second terminal:
+
+cd frontend
+npm run dev
+
+Open the Vite URL shown in the terminal, usually:
+
+http://localhost:5173

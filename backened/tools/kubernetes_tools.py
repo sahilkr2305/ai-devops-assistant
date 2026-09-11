@@ -1,12 +1,12 @@
 import subprocess
 
 
-def run_git_command(command: list[str]):
+def run_kubectl_command(command: list[str]):
     """
-    Safely execute a Git command without using a shell.
+    Safely execute a kubectl command without using a shell.
 
-    shell=False prevents shell injection and ensures
-    each argument is passed directly to Git.
+    shell=False prevents shell injection and ensures each
+    argument is passed directly to kubectl.
     """
 
     try:
@@ -29,7 +29,7 @@ def run_git_command(command: list[str]):
         return {
             "success": False,
             "output": "",
-            "error": "Git command timed out.",
+            "error": "kubectl command timed out.",
             "return_code": -1
         }
 
@@ -37,7 +37,7 @@ def run_git_command(command: list[str]):
         return {
             "success": False,
             "output": "",
-            "error": "Git executable was not found.",
+            "error": "kubectl executable was not found.",
             "return_code": -1
         }
 
@@ -50,43 +50,43 @@ def run_git_command(command: list[str]):
         }
 
 
-def git_status():
-    return run_git_command([
-        "git",
-        "status",
-        "--short",
-        "--branch"
+def kubernetes_cluster():
+    return run_kubectl_command([
+        "kubectl",
+        "cluster-info"
     ])
 
 
-def git_log():
-    return run_git_command([
-        "git",
-        "log",
-        "--oneline",
-        "-10"
+def kubernetes_pods():
+    return run_kubectl_command([
+        "kubectl",
+        "get",
+        "pods",
+        "-A"
     ])
 
 
-def git_branch():
-    return run_git_command([
-        "git",
-        "branch",
-        "--show-current"
+def kubernetes_deployments():
+    return run_kubectl_command([
+        "kubectl",
+        "get",
+        "deployments",
+        "-A"
     ])
 
 
-def git_remote():
-    return run_git_command([
-        "git",
-        "remote",
-        "-v"
+def kubernetes_services():
+    return run_kubectl_command([
+        "kubectl",
+        "get",
+        "services",
+        "-A"
     ])
 
 
-def git_diff():
-    return run_git_command([
-        "git",
-        "diff",
-        "--stat"
+def kubernetes_namespaces():
+    return run_kubectl_command([
+        "kubectl",
+        "get",
+        "namespaces"
     ])

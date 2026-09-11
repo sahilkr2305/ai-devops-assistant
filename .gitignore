@@ -1,0 +1,40 @@
+# Environment variables
+.env
+*.env
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python databases
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB / RAG data
+backened/data/chroma/
+
+# Node
+node_modules/
+frontend/node_modules/
+
+# Frontend build
+frontend/dist/
+dist/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/

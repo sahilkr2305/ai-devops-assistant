@@ -3,8 +3,8 @@
 An AI-powered DevOps chatbot and copilot built with **React**, **FastAPI**, **Google Gemini**, **LangChain**, and **ChromaDB**. It helps developers understand DevOps concepts, troubleshoot issues, retrieve knowledge, and safely interact with DevOps tools such as Docker, Git, and Kubernetes.
 
 ---
+<img width="1340" height="621" alt="image" src="https://github.com/user-attachments/assets/5fce0796-8c11-45d1-8e60-087075259c77" />
 
-<img width="1346" height="625" alt="image" src="https://github.com/user-attachments/assets/7b9bff7f-8226-479f-8809-0b80b3af00cf" />
 
 
 

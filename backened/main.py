@@ -252,6 +252,41 @@ INFORMATIONAL_PHRASES = (
     "beginner", "important commands",
 )
 
+LIVE_REQUEST_PHRASES = (
+    "show my",
+    "check my",
+    "list my",
+    "get my",
+    "inspect my",
+    "view my",
+    "check the",
+    "show the",
+    "list the",
+    "inspect the",
+    "what is running",
+    "what's running",
+    "is docker running",
+    "is kubernetes running",
+    "run",
+    "execute",
+    "perform",
+    "inspect",
+    "check status",
+)
+
+
+def is_live_request(message: str) -> bool:
+    """
+    Return True when the user explicitly asks
+    for live system information or an operation.
+    """
+
+    text = " ".join(message.lower().split())
+
+    return any(
+        phrase in text
+        for phrase in LIVE_REQUEST_PHRASES
+    )
 
 def is_informational_request(message: str) -> bool:
     """Return True for knowledge-only requests."""
@@ -393,8 +428,7 @@ async def chat_stream(request: ChatRequest):
     messages.append(
         HumanMessage(content=user_message)
     )
-
-    use_tools = not is_informational_request(user_message)
+    use_tools = is_live_request(user_message)
     model = llm.bind_tools(DEVOPS_TOOLS) if use_tools else llm
 
     async def event_generator():

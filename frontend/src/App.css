@@ -780,7 +780,7 @@ button {
 
 .processing-icon {
   display: flex;
-  animation: spin 1s linear infinite;
+  animation: none;
 }
 
 .loading {

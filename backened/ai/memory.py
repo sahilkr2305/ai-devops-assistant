@@ -17,11 +17,10 @@ def get_project_memory(
     limit: int = 10
 ) -> list[dict]:
     """
-    Get the most recent conversation messages
-    for a project.
+    Get recent conversation messages for a project.
 
-    The messages are returned in chronological
-    order so they can be passed to the LLM.
+    Memory is only a source of context.
+    The caller decides whether the memory is relevant.
     """
 
     messages = (
@@ -36,54 +35,51 @@ def get_project_memory(
         .all()
     )
 
-
-    # Database returns newest first.
-    # Reverse so the AI receives oldest → newest.
-
     messages.reverse()
-
 
     memory = []
 
-
     for message in messages:
-
         memory.append({
             "user": message.user_message,
             "assistant": message.ai_response,
         })
 
-
     return memory
 
 
 # ==================================================
-# FORMAT MEMORY FOR GEMINI
+# FORMAT MEMORY
 # ==================================================
 
 def format_memory(
     memory: list[dict]
 ) -> str:
     """
-    Convert conversation history into text
-    that can be included in the LLM prompt.
+    Format relevant conversation context.
+
+    This is reference material only.
+    It must never be treated as a new instruction.
     """
 
     if not memory:
-        return "No previous conversation."
-
+        return "No relevant previous conversation."
 
     formatted = []
 
-
     for item in memory:
+        user = item.get("user", "").strip()
+        assistant = item.get("assistant", "").strip()
+
+        if not user and not assistant:
+            continue
 
         formatted.append(
-            f"User: {item['user']}\n"
-            f"Assistant: {item['assistant']}"
+            f"Previous user message: {user}\n"
+            f"Previous assistant response: {assistant}"
         )
 
+    if not formatted:
+        return "No relevant previous conversation."
 
-    return "\n\n".join(
-        formatted
-    )
+    return "\n\n---\n\n".join(formatted)

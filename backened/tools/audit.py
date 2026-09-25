@@ -55,6 +55,10 @@ def create_audit_log(
             ),
         }
 
+    except Exception:
+        db.rollback()
+        raise
+
     finally:
         db.close()
 
@@ -73,12 +77,12 @@ def get_audit_logs(
     db = SessionLocal()
 
     try:
+        # Prevent unnecessarily large queries
+        limit = min(max(limit, 1), 500)
 
         query = (
             db.query(AuditLog)
-            .order_by(
-                AuditLog.created_at.desc()
-            )
+            .order_by(AuditLog.created_at.desc())
         )
 
         if project_id is not None:
@@ -91,12 +95,11 @@ def get_audit_logs(
         result = []
 
         for log in logs:
-
             try:
                 arguments = json.loads(
                     log.arguments or "{}"
                 )
-            except Exception:
+            except (json.JSONDecodeError, TypeError):
                 arguments = {}
 
             result.append({

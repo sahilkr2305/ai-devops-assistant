@@ -4,9 +4,8 @@ An AI-powered DevOps chatbot and copilot built with **React**, **FastAPI**, **Go
 
 ---
 
-## 🔗 Live Demo
+<img width="1346" height="625" alt="image" src="https://github.com/user-attachments/assets/7b9bff7f-8226-479f-8809-0b80b3af00cf" />
 
-👉 Coming soon
 
 
 ---

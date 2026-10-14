@@ -3,7 +3,6 @@ from pathlib import Path
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
-
 # ==================================================
 # PATHS
 # ==================================================
@@ -16,7 +15,6 @@ CHROMA_DIR = (
     BASE_DIR / "data" / "chroma"
 )
 
-
 # ==================================================
 # EMBEDDING MODEL
 # ==================================================
@@ -24,7 +22,6 @@ CHROMA_DIR = (
 embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
-
 
 # ==================================================
 # CHROMA VECTOR STORE
